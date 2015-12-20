@@ -20,10 +20,10 @@ namespace CuckooCommon
 
                     JobDataMap dataMap = context.MergedJobDataMap;
 
-                    var superStuff = (Amazingers)dataMap.Where(d => d.Key == "superstuff").First().Value;
+                    var data = (Jobs)dataMap.Get("jobData");
 
-                    message.Subject = dataMap.GetString("name");
-                    message.Body = "Woot";
+                    message.Subject = data.Name;
+                    message.Body = data.Id.ToString();
                     using (SmtpClient client = new SmtpClient
                     {
                         Host = "relay.ntdomain.lan"
@@ -39,37 +39,35 @@ namespace CuckooCommon
 
         public static void StartScheduler()
         {
-            IScheduler scheduler = StdSchedulerFactory.GetDefaultScheduler();
+            //IScheduler scheduler = StdSchedulerFactory.GetDefaultScheduler();
 
-            scheduler.Start();
+            //scheduler.Start();
 
-            var jobs = Jobs.GetAllJobs();
+            //var jobs = Jobs.GetAllJobs(;
 
-            var super = new Amazingers();
-            super.SuperValue = "Wahoo";
+            //foreach (var item in jobs)
+            //{
 
-            IJobDetail job = JobBuilder.Create<EmailJob>().Build();
+                //IJobDetail job = JobBuilder.Create<EmailJob>().Build();
 
-            var jobData = new JobDataMap();
-            jobData.Add("superstuff", super);
-            jobData.Add("name", "foo");
+                //var jobData = new JobDataMap();
+                //jobData.Add("jobData", item);
 
-            ITrigger trigger = TriggerBuilder.Create()
-                .WithDailyTimeIntervalSchedule
-                  (s =>
-                     s.WithIntervalInSeconds(30)
-                    .OnEveryDay()
-                    .StartingDailyAt(TimeOfDay.HourAndMinuteOfDay(0, 0))
-                  ).UsingJobData(jobData)
-                .Build();
+                //ITrigger trigger = TriggerBuilder.Create()
+                //    .WithDailyTimeIntervalSchedule
+                //      (s =>
+                //         s.WithIntervalInSeconds(30)
+                //        .OnEveryDay()
+                //        .StartingDailyAt(TimeOfDay.HourAndMinuteOfDay(item.StartTime.Hour, item.StartTime.Minute))
+                //      ).UsingJobData(jobData)
+                //    .Build();
 
-            scheduler.ScheduleJob(job, trigger);
+                //scheduler.ScheduleJob(job, trigger);
+           // }
+            
+            
 
         }
     }
 
-    public class Amazingers
-    {
-        public string SuperValue { get; set; } 
-    }
 }
