@@ -64,6 +64,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="APIRequestHeaders.cs" />
+    <Compile Include="HttpMethods.cs" />
+    <Compile Include="Intervals.cs" />
     <Compile Include="Jobs.cs" />
     <Compile Include="JobScheduler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

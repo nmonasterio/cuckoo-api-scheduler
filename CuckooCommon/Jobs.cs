@@ -17,9 +17,22 @@ namespace CuckooCommon
         [BsonIgnoreIfDefault]
         public ObjectId Id { get; set; }
         public DateTime StartTime { get; set; }
-        public string Name { get; set;  }
+        public string Name { get; set; }
         public string Description { get; set; }
         public bool IsActive { get; set; }
+        public string Endpoint { get; set; }
+        public HttpMethods Method { get; set; }
+
+        [BsonIgnore]
+        public string MethodDescription { get { return this.Method.ToString(); } }
+
+        public List<APIRequestHeaders> APIRequestHeaders { get; set; }
+        public string Payload { get; set; }
+        public int Interval { get; set; }
+        public Intervals IntervalType { get; set; }
+
+        [BsonIgnore]
+        public string IntervalTypeDescription { get { return this.IntervalType.ToString(); } }
 
         public Jobs()
         {
@@ -46,7 +59,7 @@ namespace CuckooCommon
 
         public async Task<List<Jobs>> GetAllJobs()
         {
-            
+            //this._cuckooDB.DropCollection("jobs");
 
             var collection = this._cuckooDB.GetCollection<Jobs>("jobs");
 

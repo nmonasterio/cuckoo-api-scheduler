@@ -1,0 +1,40 @@
+﻿<div ng-controller="endpointsDetailCtrl">
+
+    <h1>{{endpoint.Name}}</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <h4>Name and endpoints</h4>
+            <div class="form-group">
+                <input class="form-control" ng-model="endpoint.Name" required placeholder="Name" />
+            </div>
+
+            <div class="form-group">
+                <textarea class="form-control" ng-model="endpoint.Description" required placeholder="Description"></textarea>
+            </div>
+
+            <div class="input-group">
+                <input class="form-control" ng-model="endpoint.URL" required placeholder="URL endpoint" />
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-primary" aria-label="Test"><span class="glyphicon glyphicon-chevron-right"></span>Test</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+            <h4>Scheduling</h4>
+            <div class="form-group">
+                <uib-timepicker ng-model="endpoint.StartTime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
+            </div>
+
+            <div class="form-group">
+                <label>Enabled?</label> <input type="checkbox" ng-checked="endpoint.IsActive">
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</div>
