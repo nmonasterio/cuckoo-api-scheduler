@@ -65,6 +65,7 @@
     <Content Include="index.html" />
     <Content Include="partials\endpoints-detail.html" />
     <Content Include="partials\endpoints-add.html" />
+    <Content Include="partials\endpoints-form.html" />
     <Content Include="partials\endpoints.html" />
     <Content Include="partials\nav-side.html" />
     <Content Include="Scripts\angular-animate.js" />

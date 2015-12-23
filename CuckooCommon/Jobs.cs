@@ -34,6 +34,8 @@ namespace CuckooCommon
         [BsonIgnore]
         public string IntervalTypeDescription { get { return this.IntervalType.ToString(); } }
 
+        public DayOfWeek? DayOfWeek { get; set; } 
+
         public Jobs()
         {
             this._cuckooDB = getCuckooDB();
